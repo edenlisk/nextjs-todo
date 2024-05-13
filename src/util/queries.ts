@@ -1,11 +1,30 @@
 import {ApolloClient, createHttpLink, from, gql, InMemoryCache} from "@apollo/client";
 
-
 const httpLink = createHttpLink({uri: 'http://localhost:8000/graphql'});
+
+export function createApolloClient() {
+    return new ApolloClient({
+        link: from([httpLink]),
+        cache: new InMemoryCache()
+    })
+}
+
 const apolloClient = new ApolloClient({
     link: from([httpLink]),
     cache: new InMemoryCache()
 })
+
+export const GET_TODOS =  gql`
+    query GetTodos($userId: ID!) {
+        todos(userId: $userId) {
+            title
+            description
+            date
+            dueDate,
+            isCompleted
+        }
+    }
+`
 
 export async function getTodos(userId: String) {
     const query = gql`

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { createApolloClient } from "@/util/queries";
+import {ApolloProvider} from "@apollo/client";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +16,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const apolloClient = createApolloClient();
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ApolloProvider client={apolloClient}>
+          {children}
+        </ApolloProvider>
+      </body>
     </html>
   );
 }
