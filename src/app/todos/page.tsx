@@ -1,4 +1,5 @@
 'use client'
+import { useState } from "react";
 import {user} from "@/util/mockData";
 import Todo from "@/components/Todo";
 import { CheckboxProps } from "antd";
@@ -6,6 +7,13 @@ import {useQuery} from "@apollo/client";
 import {GET_TODOS} from "@/util/queries";
 import {useEffect} from "react";
 export default function Todos() {
+    const [todos, setTodos] = useState([
+        {
+            description: '',
+            id: '',
+            isCompleted: null
+        }
+    ])
 
     const onChange: CheckboxProps['onChange'] = (e) => {
         console.log(`checked = ${e.target.checked}`);
@@ -15,7 +23,7 @@ export default function Todos() {
 
     useEffect(() => {
         if (data) {
-            console.log(data);
+            setTodos(data.todos);
         } else if (error) {
             console.log(error.message);
         }
