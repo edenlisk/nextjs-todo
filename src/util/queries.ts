@@ -42,6 +42,18 @@ export async function getTodos(userId: String) {
     return data.todos;
 }
 
+
+export const GET_TODO = gql`
+    query getTodo($id: ID!) {
+        todo(id: $id) {
+            id,
+            title,
+            description,
+            isCompleted,
+            subTasks
+        }
+    }
+`
 export async function getTodo(id: String) {
     const query = gql`
         query getTodo($id: ID!) {
@@ -57,6 +69,19 @@ export async function getTodo(id: String) {
     const { data } = await apolloClient.query({query, variables: { id }});
     return data.todo;
 }
+
+
+export const CREATE_TODO = gql`
+    mutation CreateTodo($inputTodo: InputTodo) {
+        todo: createTodo(inputTodo: $inputTodo) {
+            id,
+            title,
+            description,
+            isCompleted,
+            date
+        }
+    }
+`
 
 export async function createTodo({ title, description } : { title: String, description: String}) {
     const mutation = gql`
