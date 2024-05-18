@@ -11,7 +11,12 @@ export function createApolloClient() {
 
 const apolloClient = new ApolloClient({
     link: from([httpLink]),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
+    defaultOptions: {
+        query: {
+            fetchPolicy: 'cache-first'
+        }
+    }
 })
 
 export const GET_TODOS =  gql`

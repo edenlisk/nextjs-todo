@@ -19,7 +19,9 @@ export default function Todos() {
         console.log(`checked = ${e.target.checked}`);
     };
 
-    const { data, loading, error } = useQuery(GET_TODOS);
+    const { data, loading, error } = useQuery(GET_TODOS, {
+        fetchPolicy: 'network-only'
+    });
 
     useEffect(() => {
         if (data) {
