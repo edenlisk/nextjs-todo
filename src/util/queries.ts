@@ -22,7 +22,6 @@ const apolloClient = new ApolloClient({
 export const GET_TODOS =  gql`
     query GetTodos($userId: ID!) {
         todos(userId: $userId) {
-            title
             description
             date
             dueDate,
