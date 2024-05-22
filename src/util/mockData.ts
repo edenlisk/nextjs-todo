@@ -1,4 +1,4 @@
-type Todo = {
+export type Todo = {
     id: String,
     date: String,
     description: String,
