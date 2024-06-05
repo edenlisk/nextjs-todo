@@ -61,34 +61,6 @@ export const user: User = {
                 {
                     "id": "6636a685fd4486b5ef881a52",
                     "date": "2024-05-04",
-                    "description": "Submit the job application",
-                    "isCompleted": false,
-                    "subTasks": [
-                        {
-                            "id": "1",
-                            "isCompleted": false,
-                            description: "How to use graphql in flutter app"
-                        },
-                        {
-                            "id": "2",
-                            "isCompleted": false,
-                            description: "How to use graphql in flutter app"
-                        },
-                        {
-                            "id": "3",
-                            "isCompleted": false,
-                            description: "How to use graphql in flutter app"
-                        },
-                        {
-                            "id": "4",
-                            "isCompleted": false,
-                            description: "How to use graphql in flutter app"
-                        },
-                    ]
-                },
-                {
-                    "id": "6636a685fd4486b5ef881a52",
-                    "date": "2024-05-04",
                     "description": "To complete Flutter navigation app",
                     "isCompleted": false,
                     "subTasks": [
